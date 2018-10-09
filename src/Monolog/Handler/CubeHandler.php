@@ -118,6 +118,11 @@ class CubeHandler extends AbstractProcessingHandler
         $data['data'] = $record['context'];
         $data['data']['level'] = $record['level'];
 
+        if (!empty($data['data']['id'])) {
+            $data['id'] = $data['data']['id'];
+            unset($data['data']['id']);
+        }
+
         if ($this->scheme === 'http') {
             $this->writeHttp(json_encode($data));
         } else {
